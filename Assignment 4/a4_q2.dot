@@ -1,0 +1,26 @@
+digraph TuringMachine {
+    rankdir=LR;
+    size="8,5";
+
+    node [shape = doublecircle]; q_accept;
+    node [shape = doublecircle]; q_reject;
+    node [shape = circle];
+
+    q0 -> q0 [label="a → X, R"];
+    q0 -> q1 [label="b → R"];
+    q0 -> q_reject [label="c → R"];
+
+    q1 -> q1 [label="b → Z, R"];
+    q1 -> q0 [label="c → Y, L"];
+    q1 -> q2 [label="_ → R"];
+
+    q2 -> q2 [label="X → R"];
+    q2 -> q2 [label="Z → R"];
+    q2 -> q2 [label="Y → R"];
+    q2 -> q_accept [label="_ → R"];
+
+    q2 -> q_reject [label="(Any unmarked symbol)"];
+
+    q_reject [shape=doublecircle];
+    q_accept [shape=doublecircle];
+}
